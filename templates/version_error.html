@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/version_error.css' %}">
+</head>
+<body>
+<div class="main">
+<h1>您的浏览器版本太低！</h1>
+<p class="dis_txt">我们检测到你的浏览器版本太低。网站使用了很多酷炫的交互效果，为确保您能体验到麦子学院最佳的浏览效果，请使用IE9.0及以上版本、Chrome、Safari及Firefox浏览器，期待与您的相遇哦！</p>
+<div class="ex_con">
+    <h3>点击图标即可下载</h3>
+    <div>
+        <div class="chrome fl">
+            <div><img src="{% static 'images/chrome.jpg' %}" alt=""></div>
+            <p>chrome</p>
+        </div>
+        <div class="firefox fl">
+            <div><img src="{% static 'images/firefox.jpg' %}" alt=""></div>
+            <p>firefox</p>
+        </div>
+        <div class="ie fl">
+            <div><img src="{% static 'images/ie.jpg' %}" alt=""></div>
+            <p>ie</p>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

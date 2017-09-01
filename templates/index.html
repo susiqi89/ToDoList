@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+</head>
+<body>
+<div id="main" class="container">
+    <h2>ToDoList</h2>
+    <form action="{% url 'add' %}" method="get" id="search_box" role="form">{% csrf_token %}
+        <input type="text" class="add_incontent" name="add_content" placeholder="还有什么事情需要做？">
+        <input type="submit" value="Add" class="btn btn-primary btn_addcon">
+    </form>
+    <ol class="list-group">
+        {% for item in item_list %}
+        <li id="{{ item.id }}" class="list list-group-item">
+            <div class="list_content fl {%if item.flag == True %}content_flag{% endif %}">{% load poll_filter %}{{ item.content_list }} - {{ item.pubdate| pubtime_info }}</div>
+            <div class="list_btn fr">
+                <div class="btn-group pull-right">
+                    <a href="/delete/?item_id={{ item.id }}" class="delete btn btn-warning" >Delete</a>
+                    <a href="#" class="edit btn btn-success" onclick="edit('{{ item.id }}')">Edit</a>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" class="pull-right" onclick="flag('{{ item.id }}')"{% if item.flag %}checked{% endif %}></label>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+    <p class="page">
+        {% if item_list.has_previous %}
+            <a href="?page={{ item_list.previous_page_number}}">上一页</a>
+        {% endif %}
+        第{{ item_list.number }}页/总共{{ item_list.paginator.num_pages }}页
+        {% if item_list.has_next %}
+            <a href="?page={{ item_list.next_page_number}}">下一页</a>
+        {% endif %}
+    </p>
+</div>
+
+
+<script>
+    function edit(item_id){
+        $('#'+ item_id).append('<form action="/edit/" method="get">' +
+                '<input type="hidden" class="itembox" name="item_id" value="' + item_id +'">' +
+                '<input type="text" class="itembox" name="item">' +
+                '<input type="submit" class="edit btn btn-success" value="submit">' +
+                '</form>');
+    }
+
+    function flag(item_id){
+        location.href = '/flag/?item_id='+ item_id
+    }
+
+</script>
+</body>
+</html>

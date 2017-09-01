@@ -1,0 +1,20 @@
+h1, p, .ex_con h3{
+    text-align: center;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.main{
+    width: 560px;
+    margin:0 auto;
+}
+
+.ex_con h3, .ex_con p{
+    color: #aaaaaa;
+}
+.firefox{
+    padding:0 7em;
+}

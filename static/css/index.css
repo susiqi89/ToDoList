@@ -1,0 +1,31 @@
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+
+.add_incontent{
+    display: block;
+    padding-left:5px;
+    line-height: 20px;
+}
+.btn_addcon{
+    display:block;
+    margin: 10px 0 20px 0;
+}
+
+.list{
+    overflow: hidden;
+}
+
+
+.content_flag{
+    text-decoration: line-through;
+}
+
+.page{
+    font-size: 12px;
+    float: right;
+    padding-right:10px;
+}
