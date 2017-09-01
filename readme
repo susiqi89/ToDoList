@@ -1,0 +1,2 @@
+运行：cd django_venv --> cd Scripts --> activate
+    cd todo --> python manage.py runserver
